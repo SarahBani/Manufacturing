@@ -1,4 +1,4 @@
-# Albelli
+# Manufacturing
 
 The architecture of this project is Onion Architecture. 
 The tests which are mentioned in the document, are placed in "Test.IntegrationTest" project. 
