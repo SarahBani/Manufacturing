@@ -1,0 +1,14 @@
+H:\Project\Albelli\AlbelliManufacturing\Core\Core.ApplicationService\bin\Debug\netcoreapp2.2\Core.ApplicationService.deps.json
+H:\Project\Albelli\AlbelliManufacturing\Core\Core.ApplicationService\bin\Debug\netcoreapp2.2\Core.ApplicationService.dll
+H:\Project\Albelli\AlbelliManufacturing\Core\Core.ApplicationService\bin\Debug\netcoreapp2.2\Core.ApplicationService.pdb
+H:\Project\Albelli\AlbelliManufacturing\Core\Core.ApplicationService\bin\Debug\netcoreapp2.2\Core.DomainModel.dll
+H:\Project\Albelli\AlbelliManufacturing\Core\Core.ApplicationService\bin\Debug\netcoreapp2.2\Core.DomainService.dll
+H:\Project\Albelli\AlbelliManufacturing\Core\Core.ApplicationService\bin\Debug\netcoreapp2.2\Core.DomainModel.pdb
+H:\Project\Albelli\AlbelliManufacturing\Core\Core.ApplicationService\bin\Debug\netcoreapp2.2\Core.DomainService.pdb
+H:\Project\Albelli\AlbelliManufacturing\Core\Core.ApplicationService\obj\Debug\netcoreapp2.2\Core.ApplicationService.csprojAssemblyReference.cache
+H:\Project\Albelli\AlbelliManufacturing\Core\Core.ApplicationService\obj\Debug\netcoreapp2.2\Core.ApplicationService.csproj.CoreCompileInputs.cache
+H:\Project\Albelli\AlbelliManufacturing\Core\Core.ApplicationService\obj\Debug\netcoreapp2.2\Core.ApplicationService.AssemblyInfoInputs.cache
+H:\Project\Albelli\AlbelliManufacturing\Core\Core.ApplicationService\obj\Debug\netcoreapp2.2\Core.ApplicationService.AssemblyInfo.cs
+H:\Project\Albelli\AlbelliManufacturing\Core\Core.ApplicationService\obj\Debug\netcoreapp2.2\Core.ApplicationService.csproj.CopyComplete
+H:\Project\Albelli\AlbelliManufacturing\Core\Core.ApplicationService\obj\Debug\netcoreapp2.2\Core.ApplicationService.dll
+H:\Project\Albelli\AlbelliManufacturing\Core\Core.ApplicationService\obj\Debug\netcoreapp2.2\Core.ApplicationService.pdb

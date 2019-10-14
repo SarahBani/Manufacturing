@@ -1,0 +1,134 @@
+{
+  "format": 1,
+  "restore": {
+    "H:\\Project\\Albelli\\ForGit\\Manufacturing\\Core\\Core.DomainService\\Core.DomainService.csproj": {}
+  },
+  "projects": {
+    "H:\\Project\\Albelli\\ForGit\\Manufacturing\\Core\\Core.DomainModel\\Core.DomainModel.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "H:\\Project\\Albelli\\ForGit\\Manufacturing\\Core\\Core.DomainModel\\Core.DomainModel.csproj",
+        "projectName": "Core.DomainModel",
+        "projectPath": "H:\\Project\\Albelli\\ForGit\\Manufacturing\\Core\\Core.DomainModel\\Core.DomainModel.csproj",
+        "packagesPath": "C:\\Users\\Sarah\\.nuget\\packages\\",
+        "outputPath": "H:\\Project\\Albelli\\ForGit\\Manufacturing\\Core\\Core.DomainModel\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "F:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Sarah\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "H:\\Project\\Albelli\\ForGit\\Manufacturing\\Core\\Core.DomainService\\Core.DomainService.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "H:\\Project\\Albelli\\ForGit\\Manufacturing\\Core\\Core.DomainService\\Core.DomainService.csproj",
+        "projectName": "Core.DomainService",
+        "projectPath": "H:\\Project\\Albelli\\ForGit\\Manufacturing\\Core\\Core.DomainService\\Core.DomainService.csproj",
+        "packagesPath": "C:\\Users\\Sarah\\.nuget\\packages\\",
+        "outputPath": "H:\\Project\\Albelli\\ForGit\\Manufacturing\\Core\\Core.DomainService\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "F:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Sarah\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "H:\\Project\\Albelli\\ForGit\\Manufacturing\\Core\\Core.DomainModel\\Core.DomainModel.csproj": {
+                "projectPath": "H:\\Project\\Albelli\\ForGit\\Manufacturing\\Core\\Core.DomainModel\\Core.DomainModel.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+H:\Project\Albelli\AlbelliManufacturing\Core\Core.DomainModel\bin\Debug\netcoreapp2.2\Core.DomainModel.deps.json
+H:\Project\Albelli\AlbelliManufacturing\Core\Core.DomainModel\bin\Debug\netcoreapp2.2\Core.DomainModel.runtimeconfig.json
+H:\Project\Albelli\AlbelliManufacturing\Core\Core.DomainModel\bin\Debug\netcoreapp2.2\Core.DomainModel.runtimeconfig.dev.json
+H:\Project\Albelli\AlbelliManufacturing\Core\Core.DomainModel\bin\Debug\netcoreapp2.2\Core.DomainModel.dll
+H:\Project\Albelli\AlbelliManufacturing\Core\Core.DomainModel\bin\Debug\netcoreapp2.2\Core.DomainModel.pdb
+H:\Project\Albelli\AlbelliManufacturing\Core\Core.DomainModel\obj\Debug\netcoreapp2.2\Core.DomainModel.csproj.CoreCompileInputs.cache
+H:\Project\Albelli\AlbelliManufacturing\Core\Core.DomainModel\obj\Debug\netcoreapp2.2\Core.DomainModel.AssemblyInfoInputs.cache
+H:\Project\Albelli\AlbelliManufacturing\Core\Core.DomainModel\obj\Debug\netcoreapp2.2\Core.DomainModel.AssemblyInfo.cs
+H:\Project\Albelli\AlbelliManufacturing\Core\Core.DomainModel\obj\Debug\netcoreapp2.2\Core.DomainModel.dll
+H:\Project\Albelli\AlbelliManufacturing\Core\Core.DomainModel\obj\Debug\netcoreapp2.2\Core.DomainModel.pdb
+H:\Project\Albelli\AlbelliManufacturing\Core\Core.DomainModel\obj\Debug\netcoreapp2.2\Core.DomainModel.csprojAssemblyReference.cache
