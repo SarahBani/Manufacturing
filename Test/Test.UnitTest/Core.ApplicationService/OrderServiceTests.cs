@@ -61,13 +61,13 @@ namespace Test.UnitTest.Core.ApplicationService
             // Arrange
             long orderID = 5;
             var order = this.Entity;
-            base.RepositoryMock.Setup(q => q.GetByIdAsync(It.IsAny<long>())).ReturnsAsync(order);
+            base.RepositoryMock.Setup(q => q.GetByIdAsync(It.IsAny<long>(), default)).ReturnsAsync(order);
 
             //Act
             var result = await this.Service.GetByOrderIDAsync(orderID);
 
             // Assert
-            this.RepositoryMock.Verify(q => q.GetByIdAsync(orderID),
+            this.RepositoryMock.Verify(q => q.GetByIdAsync(orderID, default),
                 "error in calling the correct method");  // Verifies that Repository.GetByIdAsync was called
             Assert.AreEqual(order, result, "error in returning correct entity");
         }
@@ -78,56 +78,56 @@ namespace Test.UnitTest.Core.ApplicationService
             // Arrange
             long orderID = 0;
             Order order = null;
-            base.RepositoryMock.Setup(q => q.GetByIdAsync(It.IsAny<long>())).ReturnsAsync(order);
+            base.RepositoryMock.Setup(q => q.GetByIdAsync(It.IsAny<long>(), default)).ReturnsAsync(order);
 
             //Act
             var result = await this.Service.GetByOrderIDAsync(orderID);
 
             // Assert
-            this.RepositoryMock.Verify(q => q.GetByIdAsync(orderID),
+            this.RepositoryMock.Verify(q => q.GetByIdAsync(orderID, default),
                 "error in calling the correct method");  // Verifies that Repository.GetByIdAsync was called
             Assert.IsNull(result, "error in returning null entity");
         }
 
         #endregion /GetByOrderIDAsync
 
-        #region GetMaxOrderIDAsync
+        #region GetMaxOrderID
 
         [Test]
-        public async Task GetMaxOrderIDAsync_NoOrdersYet_ReturnsOK()
+        public void GetMaxOrderID_NoOrdersYet_ReturnsOK()
         {
             // Arrange
             var orders = new List<Order>();
             long maxOrderID = 0;
-            base.RepositoryMock.Setup(q => q.GetQueryableAsync()).ReturnsAsync(orders.AsQueryable());
+            base.RepositoryMock.Setup(q => q.GetQueryable()).Returns(orders.AsQueryable());
 
             //Act
-            var result = await this.Service.GetMaxOrderIDAsync();
+            var result =  this.Service.GetMaxOrderID();
 
             // Assert
-            this.RepositoryMock.Verify(q => q.GetQueryableAsync(),
+            this.RepositoryMock.Verify(q => q.GetQueryable(),
                 "error in calling the correct method");  // Verifies that Repository.GetQueryableAsync was called
             Assert.AreEqual(maxOrderID, result, "error in returning correct OrderID");
         }
 
         [Test]
-        public async Task GetMaxOrderIDAsync_ReturnsOK()
+        public void GetMaxOrderID_ReturnsOK()
         {
             // Arrange
             var orders = this.EntityList;
             long maxOrderID = this.EntityList.Max(q => q.OrderID);
-            base.RepositoryMock.Setup(q => q.GetQueryableAsync()).ReturnsAsync(orders.AsQueryable());
+            base.RepositoryMock.Setup(q => q.GetQueryable()).Returns(orders.AsQueryable());
 
             //Act
-            var result = await this.Service.GetMaxOrderIDAsync();
+            var result = this.Service.GetMaxOrderID();
 
             // Assert
-            this.RepositoryMock.Verify(q => q.GetQueryableAsync(),
+            this.RepositoryMock.Verify(q => q.GetQueryable(),
                 "error in calling the correct method");  // Verifies that Repository.GetQueryableAsync was called
             Assert.AreEqual(maxOrderID, result, "error in returning correct OrderID");
         }
 
-        #endregion /GetMaxOrderIDAsync
+        #endregion /GetMaxOrderID
 
         #region SaveOrderAsync   
 
@@ -204,7 +204,7 @@ namespace Test.UnitTest.Core.ApplicationService
             var productTypes = new ProductTypeModel().EntityList;
             var expectedResult = new TransactionResult(new CustomException(ExceptionKey.InvalidOrderItemsProductType));
 
-            base.EntityServiceMock.Setup(q => q.ProductTypeService.GetAllAsync()).ReturnsAsync(productTypes);
+            base.EntityServiceMock.Setup(q => q.ProductTypeService.GetAll()).Returns(productTypes);
 
             //Act
             var result = await this.Service.SaveOrderAsync(orderID, orderItems);
@@ -222,14 +222,14 @@ namespace Test.UnitTest.Core.ApplicationService
             var orderItems = new OrderModel().OrderItems_Simple;
             var productTypes = new ProductTypeModel().EntityList;
 
-            base.EntityServiceMock.Setup(q => q.ProductTypeService.GetAllAsync()).ReturnsAsync(productTypes);
+            base.EntityServiceMock.Setup(q => q.ProductTypeService.GetAll()).Returns(productTypes);
 
             //Act
             var result = await this.Service.SaveOrderAsync(order.OrderID, orderItems);
 
             // Assert
             Assert.IsInstanceOf<TransactionResult>(result, "error in returning correct result type");
-            base.EntityServiceMock.Verify(q => q.ProductTypeService.GetAllAsync(),
+            base.EntityServiceMock.Verify(q => q.ProductTypeService.GetAll(),
                 "error in calling the ProductTypeService GetAllAsync method");  // Verifies that ProductTypeService.GetAllAsync was called
         }
 
@@ -241,7 +241,7 @@ namespace Test.UnitTest.Core.ApplicationService
             var orderItems = new OrderModel().OrderItems_Simple;
             var productTypes = new ProductTypeModel().EntityList;
 
-            base.EntityServiceMock.Setup(q => q.ProductTypeService.GetAllAsync()).ReturnsAsync(productTypes);
+            base.EntityServiceMock.Setup(q => q.ProductTypeService.GetAll()).Returns(productTypes);
             base.RepositoryMock.Setup(q => q.InsertAsync(order)).Verifiable();
 
             //Act
@@ -262,7 +262,7 @@ namespace Test.UnitTest.Core.ApplicationService
             var productTypes = new ProductTypeModel().EntityList;
             var successfulResult = new TransactionResult();
 
-            base.EntityServiceMock.Setup(q => q.ProductTypeService.GetAllAsync()).ReturnsAsync(productTypes);
+            base.EntityServiceMock.Setup(q => q.ProductTypeService.GetAll()).Returns(productTypes);
             var dictOrderItems = orderItems.Where(q => q.Value > 0) // if quantity equals to 0, we neglect it
                 .ToDictionary(q => productTypes.Single(x => x.Name.ToLower().Equals(q.Key.ToLower())), q => q.Value);
             base.EntityServiceMock.Setup(q => q.OrderDetailService.InsertAsync(It.IsAny<OrderDetail>())).ReturnsAsync(successfulResult);
@@ -299,7 +299,7 @@ namespace Test.UnitTest.Core.ApplicationService
                 .ToDictionary(q => productTypes.Single(x => x.Name.ToLower().Equals(q.Key.ToLower())), q => q.Value);
             var successfulResult = new TransactionResult();
 
-            base.EntityServiceMock.Setup(q => q.ProductTypeService.GetAllAsync()).ReturnsAsync(productTypes);
+            base.EntityServiceMock.Setup(q => q.ProductTypeService.GetAll()).Returns(productTypes);
             base.EntityServiceMock.Setup(q => q.OrderDetailService.InsertAsync(It.IsAny<OrderDetail>())).ReturnsAsync(successfulResult);
 
             //Act
@@ -324,7 +324,7 @@ namespace Test.UnitTest.Core.ApplicationService
                 .ToDictionary(q => productTypes.Single(x => x.Name.ToLower().Equals(q.Key.ToLower())), q => q.Value);
             var successfulResult = new TransactionResult();
 
-            base.EntityServiceMock.Setup(q => q.ProductTypeService.GetAllAsync()).ReturnsAsync(productTypes);
+            base.EntityServiceMock.Setup(q => q.ProductTypeService.GetAll()).Returns(productTypes);
             base.EntityServiceMock.Setup(q => q.OrderDetailService.InsertAsync(It.IsAny<OrderDetail>())).ReturnsAsync(successfulResult);
 
             //Act
@@ -347,7 +347,7 @@ namespace Test.UnitTest.Core.ApplicationService
                 .ToDictionary(q => productTypes.Single(x => x.Name.ToLower().Equals(q.Key.ToLower())), q => q.Value);
             var successfulResult = new TransactionResult();
 
-            base.EntityServiceMock.Setup(q => q.ProductTypeService.GetAllAsync()).ReturnsAsync(productTypes);
+            base.EntityServiceMock.Setup(q => q.ProductTypeService.GetAll()).Returns(productTypes);
             base.EntityServiceMock.Setup(q => q.OrderDetailService.InsertAsync(It.IsAny<OrderDetail>())).ReturnsAsync(successfulResult);
 
             //Act
@@ -370,7 +370,7 @@ namespace Test.UnitTest.Core.ApplicationService
                 .ToDictionary(q => productTypes.Single(x => x.Name.ToLower().Equals(q.Key.ToLower())), q => q.Value);
             var successfulResult = new TransactionResult();
 
-            base.EntityServiceMock.Setup(q => q.ProductTypeService.GetAllAsync()).ReturnsAsync(productTypes);
+            base.EntityServiceMock.Setup(q => q.ProductTypeService.GetAll()).Returns(productTypes);
             base.EntityServiceMock.Setup(q => q.OrderDetailService.InsertAsync(It.IsAny<OrderDetail>())).ReturnsAsync(successfulResult);
 
             //Act
@@ -393,7 +393,7 @@ namespace Test.UnitTest.Core.ApplicationService
                 .ToDictionary(q => productTypes.Single(x => x.Name.ToLower().Equals(q.Key.ToLower())), q => q.Value);
             var successfulResult = new TransactionResult();
 
-            base.EntityServiceMock.Setup(q => q.ProductTypeService.GetAllAsync()).ReturnsAsync(productTypes);
+            base.EntityServiceMock.Setup(q => q.ProductTypeService.GetAll()).Returns(productTypes);
             base.EntityServiceMock.Setup(q => q.OrderDetailService.InsertAsync(It.IsAny<OrderDetail>())).ReturnsAsync(successfulResult);
 
             //Act
@@ -416,7 +416,7 @@ namespace Test.UnitTest.Core.ApplicationService
                 .ToDictionary(q => productTypes.Single(x => x.Name.ToLower().Equals(q.Key.ToLower())), q => q.Value);
             var successfulResult = new TransactionResult();
 
-            base.EntityServiceMock.Setup(q => q.ProductTypeService.GetAllAsync()).ReturnsAsync(productTypes);
+            base.EntityServiceMock.Setup(q => q.ProductTypeService.GetAll()).Returns(productTypes);
             base.EntityServiceMock.Setup(q => q.OrderDetailService.InsertAsync(It.IsAny<OrderDetail>())).ReturnsAsync(successfulResult);
 
             //Act
@@ -439,7 +439,7 @@ namespace Test.UnitTest.Core.ApplicationService
                 .ToDictionary(q => productTypes.Single(x => x.Name.ToLower().Equals(q.Key.ToLower())), q => q.Value);
             var successfulResult = new TransactionResult();
 
-            base.EntityServiceMock.Setup(q => q.ProductTypeService.GetAllAsync()).ReturnsAsync(productTypes);
+            base.EntityServiceMock.Setup(q => q.ProductTypeService.GetAll()).Returns(productTypes);
             base.EntityServiceMock.Setup(q => q.OrderDetailService.InsertAsync(It.IsAny<OrderDetail>())).ReturnsAsync(successfulResult);
 
             //Act

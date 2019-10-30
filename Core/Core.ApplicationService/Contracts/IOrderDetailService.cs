@@ -8,7 +8,7 @@ namespace Core.ApplicationService.Contracts
     public interface IOrderDetailService
     {
 
-        Task<IList<OrderDetail>> GetListByOrderIDAsync(long orderID);
+        IList<OrderDetail> GetListByOrderID(long orderID);
 
         Task<TransactionResult> InsertAsync(OrderDetail orderDetail);
 

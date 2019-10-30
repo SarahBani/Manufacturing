@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Core.DomainService.Repository
@@ -11,13 +12,13 @@ namespace Core.DomainService.Repository
         where TEntity : BaseEntity
     {
 
-        Task<TEntity> GetByIdAsync(TKey id);
+        Task<TEntity> GetByIdAsync(TKey id, CancellationToken cancellationToken = default);
 
-        Task<TEntity> GetSingleAsync(Expression<Func<TEntity, bool>> filter);
+        TEntity GetSingle(Expression<Func<TEntity, bool>> filter);
 
-        Task<IQueryable<TEntity>> GetQueryableAsync();
+        IQueryable<TEntity> GetQueryable();
 
-        Task<IEnumerable<TEntity>> GetEnumerableAsync(Expression<Func<TEntity, bool>> filter = null);
+        IEnumerable<TEntity> GetEnumerable(Expression<Func<TEntity, bool>> filter = null);
 
     }
 }

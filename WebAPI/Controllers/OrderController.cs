@@ -47,8 +47,8 @@ namespace WebAPI.Controllers
             {
                 return BadRequest(Constant.Exception_OrderNotExist);
             }
-            var orderDetails = await this._orderDetailService.GetListByOrderIDAsync(id);
-            var productTypes = await this._productTypeService.GetAllAsync();
+            var orderDetails = this._orderDetailService.GetListByOrderID(id);
+            var productTypes = this._productTypeService.GetAll();
             var orderItems = orderDetails.ToDictionary(q => productTypes.Single(x => x.ProductTypeID.Equals(q.ProductTypeID)).Name, q => q.Quantity);
             var orderInformation = new OrderInformation(orderItems, order.RequiredBinWidth);
             return new OkObjectResult(orderInformation);

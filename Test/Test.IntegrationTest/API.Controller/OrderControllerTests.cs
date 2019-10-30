@@ -64,7 +64,7 @@ namespace Test.IntegrationTest.API.Controller
         public async Task GetAsync_ReturnsOK()
         {
             // Arrange
-            long id = await GetMaxOrderID();
+            long id = GetMaxOrderID();
             if (id == 0)
             { /// The exception would be invalid OrderID which I check in another test method
                 Assert.IsTrue(true, "error");
@@ -126,7 +126,7 @@ namespace Test.IntegrationTest.API.Controller
         {
             // Arrange
             var order = new OrderModel().CustomerOrder_Simple;
-            order.OrderID = await GetMaxOrderID();
+            order.OrderID = GetMaxOrderID();
             if (order.OrderID == 0)
             { /// The exception would be invalid OrderID which I check in another test method
                 Assert.IsTrue(true, "error");
@@ -223,7 +223,7 @@ namespace Test.IntegrationTest.API.Controller
             // Arrange
             var model = new OrderModel();
             var order = model.CustomerOrder_Simple;
-            order.OrderID = (await GetMaxOrderID()) + 1;
+            order.OrderID = GetMaxOrderID() + 1;
             var requestContent = base.GetSerializedContent(order);
             float expectedRequiredBinWidth = model.RequiredBinWidth_Simple;
             string url = this._postUrl;
@@ -244,7 +244,7 @@ namespace Test.IntegrationTest.API.Controller
             // Arrange
             var model = new OrderModel();
             var order = model.CustomerOrder_Sample1;
-            order.OrderID = (await GetMaxOrderID()) + 1;
+            order.OrderID = GetMaxOrderID() + 1;
             var requestContent = base.GetSerializedContent(order);
             float expectedRequiredBinWidth = model.RequiredBinWidth_Sample1And2;
             string url = this._postUrl;
@@ -265,7 +265,7 @@ namespace Test.IntegrationTest.API.Controller
             // Arrange
             var model = new OrderModel();
             var order = model.CustomerOrder_Sample2;
-            order.OrderID = (await GetMaxOrderID()) + 1;
+            order.OrderID = GetMaxOrderID() + 1;
             var requestContent = base.GetSerializedContent(order);
             float expectedRequiredBinWidth = model.RequiredBinWidth_Sample1And2;
             string url = this._postUrl;
@@ -286,7 +286,7 @@ namespace Test.IntegrationTest.API.Controller
             // Arrange
             var model = new OrderModel();
             var order = model.CustomerOrder_Sample3;
-            order.OrderID = (await GetMaxOrderID()) + 1;
+            order.OrderID = GetMaxOrderID() + 1;
             var requestContent = base.GetSerializedContent(order);
             float expectedRequiredBinWidth = model.RequiredBinWidth_Sample3;
             string url = this._postUrl;
@@ -307,7 +307,7 @@ namespace Test.IntegrationTest.API.Controller
             // Arrange
             var model = new OrderModel();
             var order = model.CustomerOrder_Complex;
-            order.OrderID = (await GetMaxOrderID()) + 1;
+            order.OrderID = GetMaxOrderID() + 1;
             var requestContent = base.GetSerializedContent(order);
             float expectedRequiredBinWidth = model.RequiredBinWidth_Complex;
             string url = this._postUrl;
@@ -328,7 +328,7 @@ namespace Test.IntegrationTest.API.Controller
             // Arrange
             var model = new OrderModel();
             var order = model.CustomerOrder_WithOneZeroQuantity;
-            order.OrderID = (await GetMaxOrderID()) + 1;
+            order.OrderID = GetMaxOrderID() + 1;
             var requestContent = base.GetSerializedContent(order);
             float expectedRequiredBinWidth = model.RequiredBinWidth_WithOneZeroQuantity;
             string url = this._postUrl;
@@ -353,7 +353,7 @@ namespace Test.IntegrationTest.API.Controller
             // Arrange
             var model = new OrderModel();
             var order = model.CustomerOrder_Simple;
-            order.OrderID = (await GetMaxOrderID()) + 1;
+            order.OrderID = GetMaxOrderID() + 1;
             var requestContent = base.GetSerializedContent(order);
             var expectedResult = new OrderInformation(model.OrderItems_Simple, model.RequiredBinWidth_Simple);
 
@@ -373,7 +373,7 @@ namespace Test.IntegrationTest.API.Controller
             // Arrange
             var model = new OrderModel();
             var order = model.CustomerOrder_Sample1;
-            order.OrderID = (await GetMaxOrderID()) + 1;
+            order.OrderID = GetMaxOrderID() + 1;
             var requestContent = base.GetSerializedContent(order);
             var expectedResult = new OrderInformation(model.OrderItems_Sample1, model.RequiredBinWidth_Sample1And2);
 
@@ -393,7 +393,7 @@ namespace Test.IntegrationTest.API.Controller
             // Arrange
             var model = new OrderModel();
             var order = model.CustomerOrder_Sample1;
-            order.OrderID = (await GetMaxOrderID()) + 1;
+            order.OrderID = GetMaxOrderID() + 1;
             var requestContent = base.GetSerializedContent(order);
             var expectedResult = new OrderInformation(model.OrderItems_Sample2, model.RequiredBinWidth_Sample1And2);
 
@@ -413,7 +413,7 @@ namespace Test.IntegrationTest.API.Controller
             // Arrange
             var model = new OrderModel();
             var order = model.CustomerOrder_Sample1;
-            order.OrderID = (await GetMaxOrderID()) + 1;
+            order.OrderID = GetMaxOrderID() + 1;
             var requestContent = base.GetSerializedContent(order);
             var expectedResult = new OrderInformation(model.OrderItems_Sample3, model.RequiredBinWidth_Sample3);
 
@@ -433,7 +433,7 @@ namespace Test.IntegrationTest.API.Controller
             // Arrange
             var model = new OrderModel();
             var order = model.CustomerOrder_Sample1;
-            order.OrderID = (await GetMaxOrderID()) + 1;
+            order.OrderID = GetMaxOrderID() + 1;
             var requestContent = base.GetSerializedContent(order);
             var expectedResult = new OrderInformation(model.OrderItems_Complex, model.RequiredBinWidth_Complex);
 
@@ -449,12 +449,12 @@ namespace Test.IntegrationTest.API.Controller
 
         #endregion /PostAsync_GetAsync
 
-        private async Task<long> GetMaxOrderID()
+        private long GetMaxOrderID()
         {
             using (var scope = base.Factory.Server.Host.Services.CreateScope())
             {
                 var orderService = scope.ServiceProvider.GetService<IOrderService>();
-                return await orderService.GetMaxOrderIDAsync();
+                return orderService.GetMaxOrderID();
             }
         }
 

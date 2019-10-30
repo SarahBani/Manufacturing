@@ -3,7 +3,6 @@ using Core.DomainModel.Entities;
 using Core.DomainService.Repository;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Core.ApplicationService.Implementation
 {
@@ -21,9 +20,9 @@ namespace Core.ApplicationService.Implementation
 
         #region Methods
 
-        public async Task<IList<OrderDetail>> GetListByOrderIDAsync(long orderID)
+        public IList<OrderDetail> GetListByOrderID(long orderID)
         {
-            return await Task.Run(() => base.GetEnumerableAsync(q => q.OrderID.Equals(orderID)).Result.ToList());
+            return base.GetEnumerable(q => q.OrderID.Equals(orderID)).ToList();
         }
 
         #endregion /Methods

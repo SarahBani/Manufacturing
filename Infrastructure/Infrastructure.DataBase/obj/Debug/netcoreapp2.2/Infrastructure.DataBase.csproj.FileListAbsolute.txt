@@ -12,3 +12,16 @@ H:\Project\Albelli\AlbelliManufacturing\Infrastructure\Infrastructure.DataBase\o
 H:\Project\Albelli\AlbelliManufacturing\Infrastructure\Infrastructure.DataBase\obj\Debug\netcoreapp2.2\Infrastructure.DataBase.csproj.CopyComplete
 H:\Project\Albelli\AlbelliManufacturing\Infrastructure\Infrastructure.DataBase\obj\Debug\netcoreapp2.2\Infrastructure.DataBase.dll
 H:\Project\Albelli\AlbelliManufacturing\Infrastructure\Infrastructure.DataBase\obj\Debug\netcoreapp2.2\Infrastructure.DataBase.pdb
+H:\Project\Albelli\ForGit\Manufacturing\Infrastructure\Infrastructure.DataBase\obj\Debug\netcoreapp2.2\Infrastructure.DataBase.csprojAssemblyReference.cache
+H:\Project\Albelli\ForGit\Manufacturing\Infrastructure\Infrastructure.DataBase\obj\Debug\netcoreapp2.2\Infrastructure.DataBase.AssemblyInfoInputs.cache
+H:\Project\Albelli\ForGit\Manufacturing\Infrastructure\Infrastructure.DataBase\obj\Debug\netcoreapp2.2\Infrastructure.DataBase.AssemblyInfo.cs
+H:\Project\Albelli\ForGit\Manufacturing\Infrastructure\Infrastructure.DataBase\obj\Debug\netcoreapp2.2\Infrastructure.DataBase.dll
+H:\Project\Albelli\ForGit\Manufacturing\Infrastructure\Infrastructure.DataBase\obj\Debug\netcoreapp2.2\Infrastructure.DataBase.pdb
+H:\Project\Albelli\ForGit\Manufacturing\Infrastructure\Infrastructure.DataBase\bin\Debug\netcoreapp2.2\Infrastructure.DataBase.deps.json
+H:\Project\Albelli\ForGit\Manufacturing\Infrastructure\Infrastructure.DataBase\bin\Debug\netcoreapp2.2\Infrastructure.DataBase.dll
+H:\Project\Albelli\ForGit\Manufacturing\Infrastructure\Infrastructure.DataBase\bin\Debug\netcoreapp2.2\Infrastructure.DataBase.pdb
+H:\Project\Albelli\ForGit\Manufacturing\Infrastructure\Infrastructure.DataBase\bin\Debug\netcoreapp2.2\Core.DomainModel.dll
+H:\Project\Albelli\ForGit\Manufacturing\Infrastructure\Infrastructure.DataBase\bin\Debug\netcoreapp2.2\Core.DomainService.dll
+H:\Project\Albelli\ForGit\Manufacturing\Infrastructure\Infrastructure.DataBase\bin\Debug\netcoreapp2.2\Core.DomainModel.pdb
+H:\Project\Albelli\ForGit\Manufacturing\Infrastructure\Infrastructure.DataBase\bin\Debug\netcoreapp2.2\Core.DomainService.pdb
+H:\Project\Albelli\ForGit\Manufacturing\Infrastructure\Infrastructure.DataBase\obj\Debug\netcoreapp2.2\Infrastructure.DataBase.csproj.CopyComplete

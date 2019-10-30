@@ -90,8 +90,8 @@ namespace Test.UnitTest.UserInterface.WebAPI
             var orderInformation = new OrderInformation(orderItems, order.RequiredBinWidth);
             var expectedResult = new OkObjectResult(orderInformation);
             this._orderServiceMock.Setup(q => q.GetByOrderIDAsync(orderID)).ReturnsAsync(order);
-            this._orderDetailServiceMock.Setup(q => q.GetListByOrderIDAsync(orderID)).ReturnsAsync(orderDetails);
-            this._productTypeServiceMock.Setup(q => q.GetAllAsync()).ReturnsAsync(productTypes);
+            this._orderDetailServiceMock.Setup(q => q.GetListByOrderID(orderID)).Returns(orderDetails);
+            this._productTypeServiceMock.Setup(q => q.GetAll()).Returns(productTypes);
 
             //Act
             var result = await this._controller.GetAsync(orderID);
@@ -100,9 +100,9 @@ namespace Test.UnitTest.UserInterface.WebAPI
             Assert.IsInstanceOf<OkObjectResult>(result, "error in returning correct result type");
             this._orderServiceMock.Verify(q => q.GetByOrderIDAsync(orderID),
                 "error in calling the correct method");  // Verifies that OrderService.GetByIdAsync was called
-            this._orderDetailServiceMock.Verify(q => q.GetListByOrderIDAsync(orderID),
+            this._orderDetailServiceMock.Verify(q => q.GetListByOrderID(orderID),
                 "error in calling the correct method");  // Verifies that OrderDetailService.GetListByOrderIDAsync was called
-            this._productTypeServiceMock.Verify(q => q.GetAllAsync(),
+            this._productTypeServiceMock.Verify(q => q.GetAll(),
                 "error in calling the correct method");  // Verifies that ProductTypeService.GetAllAsync was called
             TestHelper.AreEqualEntities(expectedResult, result, "error in returning correct entity");
         }

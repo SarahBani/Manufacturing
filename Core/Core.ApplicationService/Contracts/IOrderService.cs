@@ -10,7 +10,7 @@ namespace Core.ApplicationService.Contracts
 
         Task<Order> GetByOrderIDAsync(long orderID);
 
-        Task<long> GetMaxOrderIDAsync();
+        long GetMaxOrderID();
 
         Task<TransactionResult> SaveOrderAsync(long orderID, IDictionary<string, short> orderItems);
 

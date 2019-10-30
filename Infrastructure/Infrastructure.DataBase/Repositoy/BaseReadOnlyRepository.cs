@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Infrastructure.DataBase.Repository
@@ -28,27 +29,25 @@ namespace Infrastructure.DataBase.Repository
         #endregion /Constructors
 
         #region Methods
-
-        public virtual async Task<TEntity> GetByIdAsync(TKey id)
+        
+        public virtual Task<TEntity> GetByIdAsync(TKey id, CancellationToken cancellationToken = default)
         {
-            return await this.DBContext.Set<TEntity>().FindAsync(id);
+            return this.DBContext.Set<TEntity>().FindAsync(id, cancellationToken);
         }
 
-        public virtual async Task<TEntity> GetSingleAsync(Expression<Func<TEntity, bool>> filter)
+        public virtual TEntity GetSingle(Expression<Func<TEntity, bool>> filter)
         {
-            return await Task.Run(() => this.DBContext.Set<TEntity>()
-                .Where(filter)
-                .SingleOrDefault());
+            return this.DBContext.Set<TEntity>().Where(filter).SingleOrDefault();
         }
 
-        public virtual async Task<IQueryable<TEntity>> GetQueryableAsync()
+        public virtual IQueryable<TEntity> GetQueryable()
         {
-            return await Task.Run(() => this.DBContext.Set<TEntity>().AsQueryable());
+            return this.DBContext.Set<TEntity>().AsQueryable();
         }
 
-        public virtual async  Task<IEnumerable<TEntity>> GetEnumerableAsync(Expression<Func<TEntity, bool>> filter = null)
+        public virtual IEnumerable<TEntity> GetEnumerable(Expression<Func<TEntity, bool>> filter = null)
         {
-            return await Task.Run(() => this.DBContext.Set<TEntity>().Where(filter));
+            return this.DBContext.Set<TEntity>().Where(filter);
         }
 
         #endregion /Methods

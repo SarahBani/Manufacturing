@@ -34,9 +34,9 @@ namespace Core.ApplicationService.Implementation
         /// so, I added this method for getting the last OrderID for testing
         /// </summary>
         /// <returns></returns>
-        public async Task<long> GetMaxOrderIDAsync()
+        public long GetMaxOrderID()
         {
-            var query = await base.GetQueryableAsync();
+            var query = base.GetQueryable();
             if (query.Any())
             {
                 return query.OrderByDescending(q => q.OrderID)
@@ -65,7 +65,7 @@ namespace Core.ApplicationService.Implementation
                 {
                     throw new CustomException(ExceptionKey.InvalidOrderItemsQuantity);
                 }
-                var productTypes = await base.EntityService.ProductTypeService.GetAllAsync();
+                var productTypes = base.EntityService.ProductTypeService.GetAll();
                 if (orderItems.Any(q => !productTypes.Any(x => x.Name.ToLower().Equals(q.Key.ToLower()))))
                 {
                     throw new CustomException(ExceptionKey.InvalidOrderItemsProductType);
@@ -122,7 +122,7 @@ namespace Core.ApplicationService.Implementation
                     ProductTypeID = productType.ProductTypeID,
                     Quantity = item.Value
                 };
-               tasks.Add(base.EntityService.OrderDetailService.InsertAsync(orderDetail)); // they can be inserted asyncronously
+                tasks.Add(base.EntityService.OrderDetailService.InsertAsync(orderDetail)); // they can be inserted asyncronously
             }
             await Task.WhenAll(tasks.ToArray()).ContinueWith(action =>
             {

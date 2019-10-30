@@ -1,5 +1,4 @@
 ﻿using Core.DomainModel.Entities;
-using Core.DomainService;
 using Core.DomainService.Repository;
 using System;
 using System.Collections.Generic;
@@ -39,30 +38,29 @@ namespace Core.ApplicationService.Implementation
 
         #region Methods
 
-        public virtual async Task<TEntity> GetByIdAsync(TKey id)
+        public virtual Task<TEntity> GetByIdAsync(TKey id)
         {
-            return await this.Repository.GetByIdAsync(id);
+            return this.Repository.GetByIdAsync(id);
         }
 
-        public virtual async Task<TEntity> GetSingleAsync(Expression<Func<TEntity, bool>> filter)
+        public virtual TEntity GetSingle(Expression<Func<TEntity, bool>> filter)
         {
-            return await this.Repository.GetSingleAsync(filter);
+            return this.Repository.GetSingle(filter);
         }
 
-        public virtual async Task<IList<TEntity>> GetAllAsync()
+        public virtual IList<TEntity> GetAll()
         {
-            return await Task.Run(() => this.GetQueryableAsync().Result.ToList());
+            return this.GetQueryable().ToList();
         }
 
-        protected async Task<IQueryable<TEntity>> GetQueryableAsync()
+        protected IQueryable<TEntity> GetQueryable()
         {
-            return await this.Repository.GetQueryableAsync();
+            return this.Repository.GetQueryable();
         }
 
-        protected async Task<IEnumerable<TEntity>> GetEnumerableAsync(
-            Expression<Func<TEntity, bool>> filter = null)
+        protected IEnumerable<TEntity> GetEnumerable(Expression<Func<TEntity, bool>> filter = null)
         {
-            return await this.Repository.GetEnumerableAsync(filter);
+            return this.Repository.GetEnumerable(filter);
         }
 
         #endregion /Methods
